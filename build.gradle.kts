@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.weissenba.aerovista"
-version = "1.1.0"
+version = "1.1.2"
 
 val pluginName = "AeroVista"
 
@@ -35,7 +35,7 @@ val validateTheme by tasks.registering(Exec::class) {
 val pluginJar by tasks.registering(Jar::class) {
     dependsOn(validateTheme, tasks.named("classes"))
     group = "build"
-    description = "Packages the resource-only IntelliJ theme plugin JAR."
+    description = "Packages the IntelliJ theme plugin JAR."
     archiveBaseName.set(pluginName)
     archiveVersion.set(project.version.toString())
     from(sourceSets.main.get().output)

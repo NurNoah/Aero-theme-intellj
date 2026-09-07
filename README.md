@@ -12,7 +12,7 @@ AeroVista ist ein helles Theme für die **Islands UI ab IntelliJ Platform 2025.3
 - Eigene Syntaxfarben für Java, Kotlin, JavaScript, Python, HTML/XML und weitere Sprachen
 - Eigenes Frutiger-Aero-inspiriertes Hintergrundbild: dezent mit 9 % im Editor, kräftig im leeren Fenster
 - Angepasste IntelliJ-Iconpalette und native Islands-Rundungen
-- Leicht durchscheinende Dialoge, Menüs und schwebende Popups
+- Sichtbar durchscheinende Dialoge (90 %), Menüs und schwebende Popups (92 %)
 - Farbenfrohes Java-Semantik-Highlighting für Klassen, Methoden, Annotationen, Felder und Literale
 
 ## Installation
@@ -20,25 +20,25 @@ AeroVista ist ein helles Theme für die **Islands UI ab IntelliJ Platform 2025.3
 Die fertige ZIP-Datei liegt nach dem Build unter:
 
 ```text
-build/distributions/AeroVista-1.1.0.zip
+build/distributions/AeroVista-1.1.2.zip
 ```
 
 In IntelliJ IDEA:
 
 1. **Settings → Plugins** öffnen.
 2. Über das Zahnrad **Install Plugin from Disk…** wählen.
-3. `AeroVista-1.1.0.zip` auswählen und die IDE neu starten.
+3. `AeroVista-1.1.2.zip` auswählen und die IDE neu starten.
 4. Unter **Settings → Appearance & Behavior → Appearance → Theme** das Theme **AeroVista – Frutiger Aero** aktivieren.
 
 ## Build und Prüfung
 
-Der Build benötigt nur Java mit `jar`, `zip` und Python 3:
+Der Build läuft über den mitgelieferten Gradle Wrapper und benötigt eine lokale IntelliJ-IDEA-Installation sowie Python 3 für die Theme-Validierung:
 
 ```bash
 ./scripts/build.sh
 ```
 
-Alternativ mit dem mitgelieferten Gradle Wrapper:
+Direkt über Gradle geht es ebenfalls:
 
 ```bash
 ./gradlew buildPlugin

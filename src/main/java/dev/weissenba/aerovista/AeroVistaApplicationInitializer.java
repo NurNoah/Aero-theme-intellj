@@ -5,6 +5,8 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Disposer;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 
 import javax.swing.JDialog;
 import javax.swing.JWindow;
@@ -24,13 +26,13 @@ import java.awt.event.WindowEvent;
  * by alpha-valued Panel.background colors on macOS.
  */
 public final class AeroVistaApplicationInitializer implements ApplicationInitializedListener, Disposable {
-    private static final float DIALOG_OPACITY = 0.94f;
-    private static final float FLOATING_WINDOW_OPACITY = 0.96f;
+    private static final float DIALOG_OPACITY = 0.90f;
+    private static final float FLOATING_WINDOW_OPACITY = 0.92f;
 
     private AWTEventListener windowListener;
 
     @Override
-    public void componentsInitialized() {
+    public Object execute(Continuation<? super Unit> continuation) {
         Application application = ApplicationManager.getApplication();
         Disposer.register(application, this);
 
@@ -46,6 +48,7 @@ public final class AeroVistaApplicationInitializer implements ApplicationInitial
                 applyFloatingWindowOpacity(window);
             }
         });
+        return Unit.INSTANCE;
     }
 
     private static void applyFloatingWindowOpacity(Window window) {

@@ -2,7 +2,7 @@
     <id>dev.weissenba.aerovista</id>
     <name>AeroVista – Frutiger Aero Theme</name>
     <vendor email="support@aerovista.invalid">AeroVista</vendor>
-    <version>1.1.0</version>
+    <version>1.1.2</version>
 
     <description><![CDATA[
         A bright, optimistic Frutiger Aero-inspired theme for the IntelliJ Platform Islands UI.

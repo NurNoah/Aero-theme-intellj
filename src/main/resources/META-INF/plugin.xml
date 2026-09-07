@@ -1,0 +1,24 @@
+<idea-plugin>
+    <id>dev.weissenba.aerovista</id>
+    <name>AeroVista – Frutiger Aero Theme</name>
+    <vendor email="support@aerovista.invalid">AeroVista</vendor>
+    <version>1.1.0</version>
+
+    <description><![CDATA[
+        A bright, optimistic Frutiger Aero-inspired theme for the IntelliJ Platform Islands UI.
+        Aqua glass accents, fresh greens, clear blue focus states, a calm editor palette, and a
+        subtle original landscape background create the nostalgic look without sacrificing usability.
+    ]]></description>
+
+    <idea-version since-build="253"/>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <themeProvider
+                id="9e452f38-b91e-4c44-81f9-13ef4bcc98ec"
+                path="/themes/aerovista.theme.json"
+                targetUi="islands"/>
+        <bundledColorScheme id="AeroVista Editor" path="themes/AeroVista"/>
+        <applicationInitializedListener implementation="dev.weissenba.aerovista.AeroVistaApplicationInitializer"/>
+    </extensions>
+</idea-plugin>

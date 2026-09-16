@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.weissenba.aerovista"
-version = "1.1.5"
+version = "1.1.6"
 
 val pluginName = "AeroVista"
 

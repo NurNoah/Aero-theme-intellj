@@ -1,14 +1,12 @@
 package dev.weissenba.aerovista;
 
-import com.intellij.ide.ApplicationInitializedListener;
+import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.IdeFrame;
-import kotlin.Unit;
-import kotlin.coroutines.Continuation;
 
 import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
@@ -23,13 +21,14 @@ import java.awt.event.AWTEventListener;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Applies uniform translucency for secondary windows. Uniform opacity avoids
  * the decorated-frame crash caused
  * by alpha-valued Panel.background colors on macOS.
  */
-public final class AeroVistaApplicationInitializer implements ApplicationInitializedListener, Disposable {
+public final class AeroVistaApplicationInitializer implements AppLifecycleListener, Disposable {
     private static final Logger LOG = Logger.getInstance(AeroVistaApplicationInitializer.class);
     private static final float DIALOG_OPACITY = 0.91f;
     private static final float FLOATING_WINDOW_OPACITY = 0.92f;
@@ -37,7 +36,7 @@ public final class AeroVistaApplicationInitializer implements ApplicationInitial
     private AWTEventListener windowListener;
 
     @Override
-    public Object execute(Continuation<? super Unit> continuation) {
+    public void appFrameCreated(List<String> commandLineArgs) {
         Application application = ApplicationManager.getApplication();
         Disposer.register(application, this);
 
@@ -53,7 +52,6 @@ public final class AeroVistaApplicationInitializer implements ApplicationInitial
                 applyFloatingWindowOpacity(window);
             }
         });
-        return Unit.INSTANCE;
     }
 
     private static void applyFloatingWindowOpacity(Window window) {
